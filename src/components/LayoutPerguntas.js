@@ -1,16 +1,16 @@
 import styled from "styled-components"
-import mock from "../mock"
 import Card from "./Card"
 
-console.log(mock)
+export default function LayoutPerguntas ({cards, alteraContagem}){
 
-export default function LayoutPerguntas (){
     return (
         <Layout>
-            {mock.map((m,indice) => <Card key={indice} 
+            {cards.map((m,indice) => <Card key={indice} 
                                           numero={indice+1}
                                           pergunta={m.question}
-                                          resposta={m.answer} />)}
+                                          resposta={m.answer} 
+                                          alteraContagem = {alteraContagem}
+                                         />)}
         </Layout>
     )
 }
