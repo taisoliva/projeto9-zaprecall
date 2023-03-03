@@ -28,16 +28,16 @@ export default function Card(props) {
     return (
 
         <>
-            <CardInicio botaoInicio={botaoPlay} cor={cor}>
-                <p> Pergunta {numero}</p>
-                <img  onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
+            <CardInicio data-test="flashcard" botaoInicio={botaoPlay} cor={cor}>
+                <p data-test="flashcard-text"> Pergunta {numero}</p>
+               <img data-test="play-btn no-icon zap-icon partial-icon" onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
             </CardInicio>
 
 
             <CardPergunta botaoInicio={botaoPlay} >
-                <p> {paragrafo} </p>
+                <p data-test="flashcard-text"> {paragrafo} </p>
                 <ImagemVira botaoVira={botaoVira}>
-                    <img onClick={() => {
+                    <img data-test="turn-btn"  onClick={() => {
                         setBotaoVira(true)
                         setParagrafo(resposta)
                     }} src={vira} alt={vira}></img>
@@ -45,7 +45,7 @@ export default function Card(props) {
 
                 <FormatacaoBotoes botaoVira={botaoVira} >
 
-                    <button onClick={() => {setBotaoPlay(false)
+                    <button  data-test="no-btn" onClick={() => {setBotaoPlay(false)
                                             setParagrafo(pergunta)
                                             setBotaoVira(false)
                                             setCor("#FF3030")
@@ -54,7 +54,7 @@ export default function Card(props) {
                                             }}> 
                                     Não lembrei </button>
 
-                    <button onClick={() => {setBotaoPlay(false)
+                    <button  data-test="partial-btn" onClick={() => {setBotaoPlay(false)
                                            setParagrafo(pergunta)
                                            setBotaoVira(false)
                                            setCor("#FF922E")
@@ -62,7 +62,7 @@ export default function Card(props) {
                                            alteraContagem()}
                                            }> Quase não lembrei </button>
                     
-                    <button onClick={() => {setBotaoPlay(false)
+                    <button data-test="zap-btn" onClick={() => {setBotaoPlay(false)
                                            setParagrafo(pergunta)
                                            setBotaoVira(false)
                                            setCor("#2FBE34")
@@ -217,8 +217,4 @@ const FormatacaoBotoes = styled.div`
      }
 `
 
-const Botoes = styled.button`
-    width: 85.17px;
-    height: 37.17px;
 
-`

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Footer (props){
     return (
         <Embaixo>
-            <p> {props.respondido}/{props.cards.length} CONCLUÍDOS </p>
+            <p data-test="footer"> {props.respondido}/{props.cards.length} CONCLUÍDOS </p>
         </Embaixo>
     );
 }
