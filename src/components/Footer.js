@@ -6,14 +6,14 @@ export default function Footer (props){
     console.log(props.arrayImagensRespostas.length)
     console.log(props.cards.length)
     return (
-        <Embaixo>
+        <Embaixo data-test="footer">
 
             {
              (props.arrayImagensRespostas.length === props.cards.length) && <p data-test="finish-text"> {(props.arrayImagensRespostas.includes("errado")) ? "Putz..." : "Parabéns!"} </p>
             }
             
 
-            <p data-test="footer"> {props.respondido}/{props.cards.length} CONCLUÍDOS </p>
+            <p > {props.respondido}/{props.cards.length} CONCLUÍDOS </p>
              
              <p> 
                 {props.arrayImagensRespostas.map((img) => {if(img === "errado")
