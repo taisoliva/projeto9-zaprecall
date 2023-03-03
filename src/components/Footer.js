@@ -2,6 +2,8 @@
 import styled from "styled-components";
 
 export default function Footer (props){
+
+    console.log(props.arrayImagensRespostas)
     return (
         <Embaixo>
             <p data-test="footer"> {props.respondido}/{props.cards.length} CONCLUÍDOS </p>

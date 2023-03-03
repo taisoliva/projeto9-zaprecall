@@ -1,20 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import play from "../assets/seta_play.png"
 import vira from "../assets/seta_virar.png"
-import errado from "../assets/icone_erro.png"
-import certo from "../assets/icone_certo.png"
-import quase from "../assets/icone_quase.png"
-
-
 
 export default function Card(props) {
 
-    const arrayImagens = [play, errado, quase, certo]
-
-    const {numero, pergunta, resposta, alteraContagem} = props
-
-    console.log(alteraContagem)
+    const {numero, pergunta, 
+        resposta, alteraContagem, 
+        arrayImagensRespostas, setArrayImagensRespostas, arrayImagens} = props
 
     const [botaoPlay, setBotaoPlay] = useState(false)
     const [botaoVira, setBotaoVira] = useState(false)
@@ -22,7 +14,7 @@ export default function Card(props) {
     const [cor,setCor] = useState("#333333")
     const [imagem, setImagem] = useState(arrayImagens[0])
 
-    
+    const arrayAuxiliar = [...arrayImagensRespostas]
 
 
     return (
@@ -30,7 +22,7 @@ export default function Card(props) {
         <>
             <CardInicio data-test="flashcard" botaoInicio={botaoPlay} cor={cor}>
                 <p data-test="flashcard-text"> Pergunta {numero}</p>
-               <img data-test="play-btn no-icon zap-icon partial-icon" onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
+               <img data-test="play-btn" onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
             </CardInicio>
 
 
@@ -51,6 +43,7 @@ export default function Card(props) {
                                             setCor("#FF3030")
                                             setImagem(arrayImagens[1])
                                             alteraContagem()
+                                            arrayAuxiliar.push(arrayImagens[1])
                                             }}> 
                                     Não lembrei </button>
 

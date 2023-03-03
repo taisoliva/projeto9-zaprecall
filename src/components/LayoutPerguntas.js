@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Card from "./Card"
 
-export default function LayoutPerguntas ({cards, alteraContagem}){
+export default function LayoutPerguntas ({cards, alteraContagem, arrayImagensRespostas, setArrayImagensRespostas, arrayImagens}){
 
     return (
         <Layout>
@@ -10,6 +10,9 @@ export default function LayoutPerguntas ({cards, alteraContagem}){
                                           pergunta={m.question}
                                           resposta={m.answer} 
                                           alteraContagem = {alteraContagem}
+                                          arrayImagensRespostas={arrayImagensRespostas}
+                                          setArrayImagensRespostas={setArrayImagensRespostas}
+                                          arrayImagens={arrayImagens}
                                          />)}
         </Layout>
     )
