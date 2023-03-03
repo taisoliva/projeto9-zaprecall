@@ -6,7 +6,7 @@ export default function Card(props) {
 
     const {numero, pergunta, 
         resposta, alteraContagem, 
-        arrayImagensRespostas, setArrayImagensRespostas, arrayImagens} = props
+        arrayImagensRespostas, setArrayImagensRespostas, arrayImagens, trocaTela} = props
 
     const [botaoPlay, setBotaoPlay] = useState(false)
     const [botaoVira, setBotaoVira] = useState(false)
@@ -21,10 +21,14 @@ export default function Card(props) {
     return (
 
         <>
-            <CardInicio data-test="flashcard" botaoInicio={botaoPlay} cor={cor}>
-                <p data-test="flashcard-text"> Pergunta {numero}</p>
-               <img data-test={icone} onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
-            </CardInicio>
+            
+            <ContainerTrocaTela trocaTela={trocaTela}>
+                <CardInicio data-test="flashcard" botaoInicio={botaoPlay} cor={cor}>
+                    <p data-test="flashcard-text"> Pergunta {numero}</p>
+                <img data-test={icone} onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
+                </CardInicio>
+            </ContainerTrocaTela>
+            
 
 
             <CardPergunta data-test="flashcard" botaoInicio={botaoPlay} >
@@ -45,7 +49,8 @@ export default function Card(props) {
                                             setImagem(arrayImagens[1])
                                             alteraContagem()
                                             setIcone("no-icon")
-                                            arrayAuxiliar.push(arrayImagens[1])
+                                            arrayAuxiliar.push("errado")
+                                            setArrayImagensRespostas(arrayAuxiliar)
                                             }}> 
                                     Não lembrei </button>
 
@@ -55,8 +60,10 @@ export default function Card(props) {
                                            setCor("#FF922E")
                                            setImagem(arrayImagens[2])
                                            alteraContagem()
-                                           setIcone("partial-icon")}
-                                           }> Quase não lembrei </button>
+                                           setIcone("partial-icon")
+                                           arrayAuxiliar.push("quase")
+                                           setArrayImagensRespostas(arrayAuxiliar)
+                                            }}> Quase não lembrei </button>
                     
                     <button data-test="zap-btn" onClick={() => {setBotaoPlay(false)
                                            setParagrafo(pergunta)
@@ -64,7 +71,10 @@ export default function Card(props) {
                                            setCor("#2FBE34")
                                            setImagem(arrayImagens[3])
                                            alteraContagem()
-                                           setIcone("zap-icon")}} > Zap! </button>
+                                           setIcone("zap-icon")
+                                           arrayAuxiliar.push("certo")
+                                           setArrayImagensRespostas(arrayAuxiliar)
+                                           }} > Zap! </button>
 
 
                 </FormatacaoBotoes>
@@ -77,6 +87,10 @@ export default function Card(props) {
 
     );
 }
+
+const ContainerTrocaTela = styled.div `
+    display: ${props => props.trocaTela ? "none" : ""};
+`
 
 const CardInicio = styled.div`
     background-color: #FFFFFF;

@@ -1,9 +1,9 @@
 import logo from "../assets/logo.png"
 import styled from "styled-components";
 
-export default function Cabecalho (){
+export default function Cabecalho ({trocaTela}){
     return(
-        <Header> 
+        <Header trocaTela={trocaTela}> 
         
             <img src={logo} alt={logo}></img>
             <p> ZapRecall </p>
@@ -13,7 +13,7 @@ export default function Cabecalho (){
 }
 
 const Header = styled.div `
-    display: flex;
+    display: ${props => props.trocaTela ? "none" : "flex"};
     justify-content: center;
     margin: 50px auto;
     
