@@ -13,6 +13,7 @@ export default function Card(props) {
     const [paragrafo, setParagrafo] = useState(pergunta)
     const [cor,setCor] = useState("#333333")
     const [imagem, setImagem] = useState(arrayImagens[0])
+    const [icone, setIcone] = useState("play-btn")
 
     const arrayAuxiliar = [...arrayImagensRespostas]
 
@@ -22,7 +23,7 @@ export default function Card(props) {
         <>
             <CardInicio data-test="flashcard" botaoInicio={botaoPlay} cor={cor}>
                 <p data-test="flashcard-text"> Pergunta {numero}</p>
-               <img data-test="play-btn" onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
+               <img data-test={icone} onClick={() => { imagem === arrayImagens[0] && setBotaoPlay(true)}} src={imagem} alt={imagem}></img>
             </CardInicio>
 
 
@@ -43,6 +44,7 @@ export default function Card(props) {
                                             setCor("#FF3030")
                                             setImagem(arrayImagens[1])
                                             alteraContagem()
+                                            setIcone("no-icon")
                                             arrayAuxiliar.push(arrayImagens[1])
                                             }}> 
                                     Não lembrei </button>
@@ -52,7 +54,8 @@ export default function Card(props) {
                                            setBotaoVira(false)
                                            setCor("#FF922E")
                                            setImagem(arrayImagens[2])
-                                           alteraContagem()}
+                                           alteraContagem()
+                                           setIcone("partial-icon")}
                                            }> Quase não lembrei </button>
                     
                     <button data-test="zap-btn" onClick={() => {setBotaoPlay(false)
@@ -60,7 +63,8 @@ export default function Card(props) {
                                            setBotaoVira(false)
                                            setCor("#2FBE34")
                                            setImagem(arrayImagens[3])
-                                           alteraContagem()}} > Zap! </button>
+                                           alteraContagem()
+                                           setIcone("zap-icon")}} > Zap! </button>
 
 
                 </FormatacaoBotoes>
