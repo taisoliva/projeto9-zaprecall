@@ -26,7 +26,7 @@ export default function Card(props) {
             </CardInicio>
 
 
-            <CardPergunta botaoInicio={botaoPlay} >
+            <CardPergunta data-test="flashcard" botaoInicio={botaoPlay} >
                 <p data-test="flashcard-text"> {paragrafo} </p>
                 <ImagemVira botaoVira={botaoVira}>
                     <img data-test="turn-btn"  onClick={() => {
